@@ -15,3 +15,5 @@ graphcool module add modules/authentication/github
 * [Graphcool Functions ⚡️](https://github.com/graphcool-examples/functions)
 * [Scripts 📝](https://github.com/graphcool-examples/scripts)
 * [Schemas 🗒](https://github.com/graphcool-examples/schemas)
+
+![](http://i.imgur.com/5RHR6Ku.png)

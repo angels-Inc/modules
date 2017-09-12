@@ -72,3 +72,5 @@ mutation {
 ```
 
 You should see that a new user has been created. The returned token can be used to authenticate requests to your Graphcool API as that user. Note that running the mutation again with the same Facebook token will not add a new user.
+
+![](http://i.imgur.com/5RHR6Ku.png)

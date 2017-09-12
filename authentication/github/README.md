@@ -74,3 +74,5 @@ You should see that a new user has been created. The returned token can be used 
 ## Contributions
 
 Thanks so much [@katopz](https://github.com/katopz) for contributing this example :tada:
+
+![](http://i.imgur.com/5RHR6Ku.png)

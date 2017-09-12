@@ -72,3 +72,5 @@ modelName has to be the name of the model you want to sync.
 Try to create a node for the model you configured. You should see a `Adding node` message in your function log, and the new node should show up in your Algolia index.
 
 If there is an error, you can see the debug message in your function log.
+
+![](http://i.imgur.com/5RHR6Ku.png)
