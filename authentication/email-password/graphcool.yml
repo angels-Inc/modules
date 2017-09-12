@@ -23,4 +23,6 @@ modules: {}
 permissions: []
 
 # Permanent Auth Token / Root Tokens
-rootTokens: [signup]
+rootTokens: 
+  - signup
+  - authenticate
