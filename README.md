@@ -7,7 +7,7 @@ Add Graphcool Modules to extend your project 🎁
 ```sh
 npm install -g graphcool
 graphcool init
-graphcool add modules/authentication/github
+graphcool module add modules/authentication/github
 ```
 
 ## Other resources
