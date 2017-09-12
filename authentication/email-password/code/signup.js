@@ -13,7 +13,7 @@ function getGraphcoolUser(email) {
       if (userQueryResult.error) {
         return Promise.reject(userQueryResult.error)
       } else {
-        return userQueryResult.User
+        return userQueryResult.EmailUser
       }
     })
 }
@@ -29,7 +29,7 @@ function createGraphcoolUser(email, passwordHash) {
       }
     }`)
     .then((userMutationResult) => {
-      return userMutationResult.createUser.id
+      return userMutationResult.createEmailUser.id
     })
 }
 

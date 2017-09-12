@@ -16,12 +16,6 @@ functions:
     type: schemaExtension
     schema: ./schemas/authenticate.graphql
 
-# Graphcool modules
-modules: {}
-
-# Model/Relation permissions
-permissions: []
-
 # Permanent Auth Token / Root Tokens
 rootTokens: 
   - signup
