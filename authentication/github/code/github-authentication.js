@@ -10,6 +10,7 @@ module.exports = function (event) {
   const api = graphcool.api('simple/v1')
 
   function getGithubToken () {
+    console.log('Getting access token...')
     return fetch('https://github.com/login/oauth/access_token', {
       method: 'POST',
       headers: {
@@ -28,14 +29,17 @@ module.exports = function (event) {
 
   function getGithubAccountData (githubToken) {
     if (!githubToken) {
-      return Promise.reject('Github access_token is undefined.')
+      console.log('The code passed is incorrect or expired.')
+      return Promise.reject()
     }
+
+    console.log('Getting account data...')
 
     return fetch(`https://api.github.com/user?access_token=${githubToken}`)
       .then(response => response.json())
       .then(parsedResponse => {
-        console.log(parsedResponse)
         if (parsedResponse.error) {
+          console.log(parsedResponse.error.message)
           return Promise.reject(parsedResponse.error.message)
         } else {
           return parsedResponse
@@ -44,6 +48,8 @@ module.exports = function (event) {
   }
 
   function getGraphcoolUser (githubUser) {
+    console.log('Getting Graphcool user...')
+
     return api
       .request(
         `
@@ -63,6 +69,8 @@ module.exports = function (event) {
   }
 
   function createGraphcoolUser (githubUser) {
+    console.log('Creating Graphcool user...')
+
     return api
       .request(
         `
@@ -99,10 +107,7 @@ module.exports = function (event) {
         return { data: { token: token } }
       })
       .catch((error) => {
-        console.log(error)
-
-        // don't expose error message to client!
-        return { error: 'An unexpected error occured.' }
+        return { error: 'The code passed is incorrect or expired.' }
       })
   })
 }
