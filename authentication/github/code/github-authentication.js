@@ -57,7 +57,7 @@ module.exports = function (event) {
         if (userQueryResult.error) {
           return Promise.reject(userQueryResult.error)
         } else {
-          return userQueryResult.User
+          return userQueryResult.GithubUser
         }
       })
   }
@@ -75,7 +75,7 @@ module.exports = function (event) {
       }`
       )
       .then(userMutationResult => {
-        return userMutationResult.createUser.id
+        return userMutationResult.createGithubUser.id
       })
   }
 
