@@ -1,10 +1,15 @@
 const fromEvent = require('graphcool-lib').fromEvent
 
-// replace with your GitHub credentials
-const client_id = '__CLIENT_ID__'
-const client_secret = '__CLIENT_SECRET__'
+// read Github credentials from environment variables
+const client_id = process.env.CLIENT_ID
+const client_secret = process.env.CLIENT_SECRET
 
 module.exports = function (event) {
+  if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET) {
+    console.log('Please provide a valid client id and secret!')
+    return { error: 'Github Authentication not configured correctly.'}
+  }
+  
   const code = event.data.githubCode
   const graphcool = fromEvent(event)
   const api = graphcool.api('simple/v1')
