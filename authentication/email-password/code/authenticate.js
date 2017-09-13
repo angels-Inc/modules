@@ -18,10 +18,6 @@ function getGraphcoolUser(api, email) {
     })
 }
 
-function generateGraphcoolToken(graphcool, graphcoolUserId) {
-  return graphcool.generateAuthToken(graphcoolUserId, 'EmailUser')
-}
-
 module.exports = function(event) {
   const email = event.data.email
   const password = event.data.password
@@ -34,8 +30,8 @@ module.exports = function(event) {
         return Promise.reject("Invalid Credentials") //returning same generic error so user can't find out what emails are registered.
       } else {
         return bcrypt.compare(password, graphcoolUser.password)
-          .then((res) => {
-            if (res === true) {
+          .then(passwordCorrect => {
+            if (passwordCorrect) {
               return graphcoolUser.id
             } else {
               return Promise.reject("Invalid Credentials")
@@ -43,14 +39,16 @@ module.exports = function(event) {
           })
       }
     })
-    .then((id) => generateGraphcoolToken(graphcool, id))
-    .then((token) => {
+    .then(graphcoolUserId => {
+      return graphcool.generateAuthToken(graphcoolUserId, 'EmailUser')
+    })
+    .then(token => {
       return { data: { token } }
     })
-    .catch((error) => {
-      console.log(error)
+    .catch(error => {
+      console.log(`Error: ${JSON.stringify(error)}`)
 
       // don't expose error message to client!
-      return { error: 'An unexpected error occured.' }
+      return { error: `An unexpected error occured` }
     })
 }

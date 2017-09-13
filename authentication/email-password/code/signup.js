@@ -42,7 +42,7 @@ module.exports = function(event) {
 
   if (validator.isEmail(email)) {
     return getGraphcoolUser(api, email)
-      .then((graphcoolUser) => {
+      .then(graphcoolUser => {
         if (graphcoolUser === null) {
           return bcrypt.hash(password, SALT_ROUNDS)
             .then(hash => createGraphcoolUser(api, email, hash))
