@@ -5,6 +5,8 @@ const client_id = process.env.CLIENT_ID
 const client_secret = process.env.CLIENT_SECRET
 
 module.exports = function (event) {
+  console.log(event)
+
   if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET) {
     console.log('Please provide a valid client id and secret!')
     return { error: 'Github Authentication not configured correctly.'}
@@ -21,6 +23,7 @@ module.exports = function (event) {
 
   function getGithubToken () {
     console.log('Getting access token...')
+
     return fetch('https://github.com/login/oauth/access_token', {
       method: 'POST',
       headers: {
@@ -33,91 +36,127 @@ module.exports = function (event) {
         code
       })
     })
-      .then(data => data.json())
-      .then(json => json.access_token)
+    .then(data => data.json())
+    .then(json => {
+      if (json.error) {
+        throw new Error(json)
+      } else {
+        console.log(json)
+
+        return json.access_token
+      }
+    })
+    .catch(error => {
+      console.log(error)
+
+      return Promise.reject({ message: 'Error while authenticating with Github' })
+    })
   }
 
   function getGithubAccountData (githubToken) {
-    if (!githubToken) {
-      console.log('The code passed is incorrect or expired.')
-      return Promise.reject()
-    }
-
     console.log('Getting account data...')
 
     return fetch(`https://api.github.com/user?access_token=${githubToken}`)
       .then(response => response.json())
-      .then(parsedResponse => {
-        if (parsedResponse.error) {
-          console.log(parsedResponse.error.message)
-          return Promise.reject(parsedResponse.error.message)
+      .then(json => {
+        if (json.error) {
+          throw new Error(json)
         } else {
-          return parsedResponse
+          console.log(json)
+
+          return json
         }
+      })
+      .catch(error => {
+        console.log(error)
+
+        return Promise.reject({ message: 'Error while getting Github user data' })
       })
   }
 
   function getGraphcoolUser (githubUser) {
     console.log('Getting Graphcool user...')
 
-    return api
-      .request(
-        `
-    query {
-      GithubUser(githubUserId: "${githubUser.id}") {
-        id
-      }
-    }`
-      )
-      .then(userQueryResult => {
-        if (userQueryResult.error) {
-          return Promise.reject(userQueryResult.error)
-        } else {
-          return userQueryResult.GithubUser
+    return api.request(`
+      query {
+        GithubUser(githubUserId: "${githubUser.id}") {
+          id
         }
-      })
+      }
+    `)
+    .then(response => {
+      if (response.error) {
+        throw new Error(response)
+      } else {
+        console.log(response)
+
+        return response.GithubUser
+      }
+    })
+    .catch(error => {
+      console.log(error)
+
+      return Promise.reject({ message: 'Error while getting Graphcool user' })
+    })
   }
 
   function createGraphcoolUser (githubUser) {
     console.log('Creating Graphcool user...')
 
-    return api
-      .request(
-        `
+    return api.request(`
       mutation {
         createGithubUser(
           githubUserId:"${githubUser.id}"
         ) {
           id
         }
-      }`
-      )
-      .then(userMutationResult => {
-        return userMutationResult.createGithubUser.id
-      })
+      }
+    `)
+    .then(response => {
+      if (response.error) {
+        throw new Error(response)
+      } else {
+        console.log(response)
+
+        return response.createGithubUser.id
+      }
+    })
+    .catch(error => {
+      console.log(error)
+
+      return Promise.reject({ message: 'Error while creating Graphcool user' })
+    })
   }
 
   function generateGraphcoolToken (graphcoolUserId) {
     return graphcool.generateAuthToken(graphcoolUserId, 'GithubUser')
+      .catch(error => {
+        console.log(error)
+
+        return Promise.reject({ message: 'Error while generating token' })
+      })
   }
 
-  return getGithubToken().then(githubToken => {
-    return getGithubAccountData(githubToken)
-      .then(githubUser => {
-        return getGraphcoolUser(githubUser).then(graphcoolUser => {
-          if (graphcoolUser === null) {
-            return createGraphcoolUser(githubUser)
-          } else {
-            return graphcoolUser.id
-          }
+  return getGithubToken()
+    .then(githubToken => {
+      return getGithubAccountData(githubToken)
+        .then(githubUser => {
+          return getGraphcoolUser(githubUser).then(graphcoolUser => {
+            if (graphcoolUser === null) {
+              return createGraphcoolUser(githubUser)
+            } else {
+              return graphcoolUser.id
+            }
+          })
         })
-      })
-      .then(generateGraphcoolToken)
-      .then(token => {
-        return { data: { token: token } }
-      })
-      .catch((error) => {
-        return { error: 'The code passed is incorrect or expired.' }
-      })
-  })
+        .then(generateGraphcoolToken)
+        .then(token => {
+          return { data: { token } }
+        })
+    })
+    .catch((error) => {
+      console.log(error)
+
+      return { error: error.message }
+    })
 }
