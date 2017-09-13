@@ -30,11 +30,11 @@ To use Github Login you need to create a Github app and add the `Github Login` p
 
 Once you created a new APP, add the and copy its App ID. Replace `__CLIENT_ID__` in `login.html` with your Github client ID.
 
-![](client-id.png)
+![](docs/client-id.png)
 
 Add `http://localhost:8000/login.html` to **Authorization callback URL**
 
-![](github-login-settings.png)
+![](docs/github-login-settings.png)
 
 To create a test Github code, run `login.html`, for example using Python's `SimpleHTTPServer`:
 
@@ -44,7 +44,7 @@ python -m SimpleHTTPServer
 
 Open `http://localhost:8000/login.html` in your browser and use the login button to authorize the app:
 
-![](authorize.png)
+![](docs/authorize.png)
 
 The Github code will be logged to the console.
 

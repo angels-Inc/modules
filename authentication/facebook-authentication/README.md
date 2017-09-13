@@ -28,13 +28,13 @@ To use Facebook Login you need to create a Facebook app and add the `Facebook Lo
 
 Once you created a new APP, add the and copy its App ID. Replace `__APP_ID__` in `login.html` with your App ID.
 
-![](app-id.png)
+![](docs/app-id.png)
 
 > Note: if your API Version is something else than `v2.9`, you also need to update that in `login.html`.
 
 Add `http://localhost:8000` and `http://localhost:8000/login.html` to your valid OAuth URIs of the `Facebook Login` product:
 
-![](facebook-login-settings.png)
+![](docs/facebook-login-settings.png)
 
 ### Create a Facebook Token
 

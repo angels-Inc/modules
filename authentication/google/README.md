@@ -25,19 +25,19 @@ graphcool module add graphcool/modules/authentication/google
 Follow the steps on https://developers.google.com/identity/ for how to work with the Google Identity Platform.
 * First, create a new project:
 
-  ![](new-project.png)
+  ![](docs/new-project.png)
 
 * Click the `Credentials` tab to create new credentials. Choose `OAuth client ID`:
 
-  ![](create-credentials.png)
+  ![](docs/create-credentials.png)
 
 * Choose `Webapplication` as application type, and add `http://localhost:8000` as authorised JavaScript origin:
 
-  ![](create-client-id.png)
+  ![](docs/create-client-id.png)
 
 * Create a new Client ID
 
-  ![](client-id.png)
+  ![](docs/client-id.png)
 
 Copy the Client ID and use it to replace `__CLIENT_ID__` in `login.html`.
 
