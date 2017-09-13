@@ -1,7 +1,7 @@
 const fromEvent = require('graphcool-lib').fromEvent
 const bcrypt = require('bcrypt')
 
-function getGraphcoolUser(email) {
+function getGraphcoolUser(api, email) {
   return api.request(`
     query {
       EmailUser(email: "${email}"){
@@ -18,7 +18,7 @@ function getGraphcoolUser(email) {
     })
 }
 
-function generateGraphcoolToken(graphcoolUserId) {
+function generateGraphcoolToken(graphcool, graphcoolUserId) {
   return graphcool.generateAuthToken(graphcoolUserId, 'EmailUser')
 }
 
@@ -28,7 +28,7 @@ module.exports = function(event) {
   const graphcool = fromEvent(event)
   const api = graphcool.api('simple/v1')
 
-  return getGraphcoolUser(email)
+  return getGraphcoolUser(api, email)
     .then((graphcoolUser) => {
       if (graphcoolUser === null) {
         return Promise.reject("Invalid Credentials") //returning same generic error so user can't find out what emails are registered.
@@ -43,7 +43,7 @@ module.exports = function(event) {
           })
       }
     })
-    .then(generateGraphcoolToken)
+    .then((id) => generateGraphcoolToken(graphcool, id))
     .then((token) => {
       return { data: { token } }
     })
