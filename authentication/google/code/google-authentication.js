@@ -1,6 +1,11 @@
 const fromEvent = require('graphcool-lib').fromEvent
 
 module.exports = function(event) {
+  if (!event.context.graphcool.pat) {
+    console.log('Please provide a valid root token!')
+    return { error: 'Google Authentication not configured correctly.'}
+  }
+
   const googleToken = event.data.googleToken
   const graphcool = fromEvent(event)
   const api = graphcool.api('simple/v1')

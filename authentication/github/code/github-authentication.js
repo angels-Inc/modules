@@ -9,7 +9,12 @@ module.exports = function (event) {
     console.log('Please provide a valid client id and secret!')
     return { error: 'Github Authentication not configured correctly.'}
   }
-  
+
+  if (!event.context.graphcool.pat) {
+    console.log('Please provide a valid root token!')
+    return { error: 'Github Authentication not configured correctly.'}
+  }
+
   const code = event.data.githubCode
   const graphcool = fromEvent(event)
   const api = graphcool.api('simple/v1')
