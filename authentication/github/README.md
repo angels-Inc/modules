@@ -12,6 +12,13 @@ graphcool module add graphcool/modules/authentication/github
 
 ## Configuration
 
+To activate the module, you need to add the module to the `modules` section in your `graphcool.yml` file:
+
+```yaml
+modules:
+  github: modules/github/graphcool.yml
+```
+
 In your base project, you need to configure the following **environment variables**.
 
 - `CLIENT_ID`: Github Client ID
