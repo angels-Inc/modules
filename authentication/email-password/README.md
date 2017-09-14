@@ -56,6 +56,6 @@ mutation {
 
 ## Contributions
 
-Thanks so much [@stevewpatterson](https://github.com/stevewpatterson), [@mwickett](https://github.com/mwickett) and [@heymartinadams](https://github.com/heymartinadams) for contributing this example :tada:
+Thanks so much [@stevewpatterson](https://github.com/stevewpatterson), [@mwickett](https://github.com/mwickett) and [@heymartinadams](https://github.com/heymartinadams) for contributing the [original example](https://github.com/graphcool-examples/functions/tree/master/authentication/email-user-management) :tada:
 
 ![](http://i.imgur.com/5RHR6Ku.png)
