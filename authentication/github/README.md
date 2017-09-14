@@ -12,7 +12,17 @@ graphcool module add graphcool/modules/authentication/github
 
 ## Configuration
 
-In your base project, you need to configure the environment variables `CLIENT_ID` and `CLIENT_SECRET`. Read on to see how to setup a Github App to obtain them.
+### Needed Environment Variables
+In your base project, you need to configure the following environment variables.
+- `CLIENT_ID`: Github Client ID
+- `CLIENT_SECRET`: Github Client Secret
+An easy way to set these up is using [direnv](https://direnv.net/).
+To use `direnv`, put the following into `.envrc` in you project root:
+```sh
+export CLIENT_ID=xxx
+export CLIENT_SECRET=xxx
+```
+Read on to see how to setup a Github App to obtain the environment variables.
 
 ## Authentication flow in app
 
@@ -24,7 +34,7 @@ In your base project, you need to configure the environment variables `CLIENT_ID
 6. In any case, the `authenticateGithubUser(githubCode: String!)` mutation returns a valid token for the user
 7. Your app stores the token and uses it in its `Authorization` header for all further requests to Graphcool
 
-## Github App Setup
+## Setup
 
 ### Create a Github App
 
