@@ -12,8 +12,7 @@ graphcool module add graphcool/modules/authentication/github
 
 ## Configuration
 
-### Needed Environment Variables
-In your base project, you need to configure the following environment variables.
+In your base project, you need to configure the following **environment variables**.
 - `CLIENT_ID`: Github Client ID
 - `CLIENT_SECRET`: Github Client Secret
 An easy way to set these up is using [direnv](https://direnv.net/).
