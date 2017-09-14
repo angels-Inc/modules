@@ -10,6 +10,8 @@ graphcool init
 graphcool module add graphcool/modules/authentication/github
 ```
 
+## Configuration
+
 In your base project, you need to configure the environment variables `CLIENT_ID` and `CLIENT_SECRET`. Read on to see how to setup a Github App to obtain them.
 
 ## Authentication flow in app
