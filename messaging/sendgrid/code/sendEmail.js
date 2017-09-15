@@ -47,7 +47,8 @@ module.exports = function(event) {
 
         return resolve({})
       } else {
-        console.log(`Email was successfuly sent!`)
+        console.log(`Email was successfuly sent:`)
+        console.log(response)
 
         return resolve({})
       }
