@@ -19,6 +19,11 @@ function getGraphcoolUser(api, email) {
 }
 
 module.exports = function(event) {
+  if (!event.context.graphcool.pat) {
+    console.log('Please provide a valid root token!')
+    return { error: 'Email Authentication not configured correctly.'}
+  }
+
   const email = event.data.email
   const password = event.data.password
   const graphcool = fromEvent(event)
