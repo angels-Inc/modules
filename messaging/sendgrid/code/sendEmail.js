@@ -8,16 +8,18 @@ module.exports = function(event) {
     return { error: 'Email module not configured correctly.' }
   }
 
-  if (!event.data.Email || !event.data.Email.node) {
+  if (!event.data.SendgridEmail || !event.data.SendgridEmail.node) {
     console.log('An unexpected error occured.')
     return { error: 'An unexpected error occured.' }
   }
 
-  const id = event.data.Email.node.id
-  const fromEmail = event.data.Email.node.fromEmail
-  const toEmail = event.data.Email.node.toEmail
-  const subject = event.data.Email.node.subject
-  const content = event.data.Email.node.content
+  const node = event.data.SendgridEmail.node
+
+  const id = node.id
+  const fromEmail = node.fromEmail
+  const toEmail = node.toEmail
+  const subject = node.subject
+  const content = node.content
 
   console.log('Sending out email:')
   console.log(`[${id} - ${subject}] from ${fromEmail} to ${toEmail}`)

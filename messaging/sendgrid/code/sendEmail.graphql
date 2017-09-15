@@ -1,5 +1,5 @@
 subscription {
-  Email(filter: {
+  SendgridEmail(filter: {
     mutation_in: [CREATED]
   }) {
     node {
