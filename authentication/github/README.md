@@ -19,6 +19,8 @@ modules:
   github: modules/github/graphcool.yml
 ```
 
+Setup a new OAuth app on Github according to this guide: https://developer.github.com/apps/building-integrations/setting-up-and-registering-oauth-apps/registering-oauth-apps/ and copy its **client id** and **client secret**.
+
 In your base project, you need to configure the following **environment variables**.
 
 - `CLIENT_ID`: Github Client ID
@@ -33,47 +35,22 @@ export CLIENT_ID=xxx
 export CLIENT_SECRET=xxx
 ```
 
-Read on to see how to setup a Github App to obtain the environment variables.
-
-## Authentication flow in app
-
-1. The user clicks the `Authenticate with Github` button
-2. The Github UI is loaded and the user accepts
-3. The app receives a Github code
-4. Your app calls the Graphcool mutation `authenticateGithubUser(githubCode: String!)`
-5. If no user exists yet that corresponds to the passed `githubCode`, a new `GithubUser` node will be created
-6. In any case, the `authenticateGithubUser(githubCode: String!)` mutation returns a valid token for the user
-7. Your app stores the token and uses it in its `Authorization` header for all further requests to Graphcool
-
-## Setup
-
-### Create a Github App
-
-To use Github Login you need to create a Github app and add the `Github Login` product. Follow [this guide to create an app](https://developer.github.com/apps/building-integrations/setting-up-and-registering-oauth-apps/registering-oauth-apps/) in a few minutes.
-
-Once you created a new APP, add the and copy its App ID. Replace `__CLIENT_ID__` in `login.html` with your Github client ID.
-
-![](docs/client-id.png)
-
-Add `http://localhost:8000/login.html` to **Authorization callback URL**
-
-![](docs/github-login-settings.png)
-
-To create a test Github code, run `login.html`, for example using Python's `SimpleHTTPServer`:
-
-```sh
-python -m SimpleHTTPServer
-```
-
-Open `http://localhost:8000/login.html` in your browser and use the login button to authorize the app:
-
-![](docs/authorize.png)
-
-The Github code will be logged to the console.
+Read on to see how to obtain a Github code to test the authentication function.
 
 ## Test the Code
 
-First, obtain a valid Github code with the small app in `login.html` as mentioned above.
+### Obtaining a test code
+
+First, update the configuration of the OAuth app on Github you just created:
+
+* Set the **Homepage URL** to `http://localhost:8000/`
+* Set the **Application Callback URL** to `http://localhost:8000/login.html`
+* Replace `__CLIENT_ID__` in `login.html` with the **client id** of your OAuth app
+* Server `login.html`, for example by using `python -m SimpleHTTPServer`
+* Open `https://localhost:8000/login.html` in a browser, open the DevTools and authenticate with your Github account
+* Copy the code printed in the Console of your DevTools
+
+### Testing the authentication function
 
 Go to the Graphcool Playground:
 
@@ -85,7 +62,7 @@ Run this mutation to authenticate a user:
 
 ```graphql
 mutation {
-  # replace __GITHUB_CODE__!
+  # replace __GITHUB_CODE__ with the code from `login.html` from above!
   authenticateGithubUser(githubCode: "__GITHUB_CODE__") {
     token
   }
@@ -93,9 +70,5 @@ mutation {
 ```
 
 You should see that a new user has been created. The returned token can be used to authenticate requests to your Graphcool API as that user. Note that running the mutation again with the same Github code will not add a new user.
-
-## Contributions
-
-Thanks so much [@katopz](https://github.com/katopz) for contributing this example :tada:
 
 ![](http://i.imgur.com/5RHR6Ku.png)
