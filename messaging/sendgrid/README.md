@@ -34,7 +34,7 @@ You can create a new Sendgrid API Key [in the account settings](https://app.send
 
 ## Flow
 
-Whenever a new `Email` node is created with information about the recipient, sender, subject and email body, the server-side subscription picks it up and invokes the SendGrid API to send out the email.
+Whenever a new `SendgridEmail` node is created with information about the recipient, sender, subject and email body, the server-side subscription picks it up and invokes the SendGrid API to send out the email.
 
 ## Test the Code
 
@@ -55,7 +55,7 @@ Run this mutation to create a new email:
 ```graphql
 mutation {
   # replace __YOUR_EMAIL__!
-  createEmail(
+  createSendgridEmail(
     content: "This is your first email from the Graphcool SendGrid module!"
     fromEmail: "nilan@graph.cool"
     toEmail: "__YOUR_EMAIL__"
