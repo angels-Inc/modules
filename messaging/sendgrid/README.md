@@ -56,10 +56,10 @@ Run this mutation to create a new email:
 mutation {
   # replace __YOUR_EMAIL__!
   createSendgridEmail(
-    content: "This is your first email from the Graphcool SendGrid module!"
     fromEmail: "nilan@graph.cool"
     toEmail: "__YOUR_EMAIL__"
     subject: "A new email from the Graphcool SendGrid module!"
+    content: "This is your first email from the Graphcool SendGrid module!"
   ) {
     id
   }
