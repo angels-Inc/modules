@@ -16,7 +16,7 @@ After downloading the module, add it to the `modules` section in your `graphcool
 
 ```yaml
 modules:
-  github: modules/algolia/graphcool.yml
+  algolia: modules/algolia/graphcool.yml
 ```
 
 In your base project, you need to configure the following **environment variables**.

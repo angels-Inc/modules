@@ -16,7 +16,7 @@ After downloading the module, add it to the `modules` section in your `graphcool
 
 ```yaml
 modules:
-  github: modules/facebook/graphcool.yml
+  facebook: modules/facebook/graphcool.yml
 ```
 
 ## Flow

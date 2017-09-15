@@ -16,7 +16,7 @@ After downloading the module, add it to the `modules` section in your `graphcool
 
 ```yaml
 modules:
-  github: modules/google/graphcool.yml
+  google: modules/google/graphcool.yml
 ```
 
 ## Flow

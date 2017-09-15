@@ -16,7 +16,7 @@ After downloading the module, add it to the `modules` section in your `graphcool
 
 ```yaml
 modules:
-  github: modules/sendgrid/graphcool.yml
+  sendgrid: modules/sendgrid/graphcool.yml
 ```
 
 In your base project, you need to configure the following **environment variables**.
