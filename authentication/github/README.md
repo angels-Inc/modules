@@ -10,7 +10,30 @@ graphcool init
 graphcool module add graphcool/modules/authentication/github
 ```
 
-Then, open the file `code/github-authentication.js` and replace `__CLIENT_ID__` and `__CLIENT_SECRET__` with your Github credentials.
+## Configuration
+
+After downloading the module, add it to the `modules` section in your `graphcool.yml` file:
+
+```yaml
+modules:
+  github: modules/github/graphcool.yml
+```
+
+In your base project, you need to configure the following **environment variables**.
+
+- `CLIENT_ID`: Github Client ID
+- `CLIENT_SECRET`: Github Client Secret
+
+
+An easy way to set these up is using [direnv](https://direnv.net/).
+To use `direnv`, put the following into `.envrc` in you project root:
+
+```sh
+export CLIENT_ID=xxx
+export CLIENT_SECRET=xxx
+```
+
+Read on to see how to setup a Github App to obtain the environment variables.
 
 ## Authentication flow in app
 
@@ -22,7 +45,7 @@ Then, open the file `code/github-authentication.js` and replace `__CLIENT_ID__` 
 6. In any case, the `authenticateGithubUser(githubCode: String!)` mutation returns a valid token for the user
 7. Your app stores the token and uses it in its `Authorization` header for all further requests to Graphcool
 
-## Github App Setup
+## Setup
 
 ### Create a Github App
 
@@ -30,11 +53,11 @@ To use Github Login you need to create a Github app and add the `Github Login` p
 
 Once you created a new APP, add the and copy its App ID. Replace `__CLIENT_ID__` in `login.html` with your Github client ID.
 
-![](client-id.png)
+![](docs/client-id.png)
 
 Add `http://localhost:8000/login.html` to **Authorization callback URL**
 
-![](github-login-settings.png)
+![](docs/github-login-settings.png)
 
 To create a test Github code, run `login.html`, for example using Python's `SimpleHTTPServer`:
 
@@ -44,7 +67,7 @@ python -m SimpleHTTPServer
 
 Open `http://localhost:8000/login.html` in your browser and use the login button to authorize the app:
 
-![](authorize.png)
+![](docs/authorize.png)
 
 The Github code will be logged to the console.
 
@@ -74,3 +97,5 @@ You should see that a new user has been created. The returned token can be used 
 ## Contributions
 
 Thanks so much [@katopz](https://github.com/katopz) for contributing this example :tada:
+
+![](http://i.imgur.com/5RHR6Ku.png)

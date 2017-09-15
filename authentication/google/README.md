@@ -10,7 +10,16 @@ graphcool init
 graphcool module add graphcool/modules/authentication/google
 ```
 
-## Authentication flow in app
+## Configuration
+
+After downloading the module, add it to the `modules` section in your `graphcool.yml` file:
+
+```yaml
+modules:
+  google: modules/google/graphcool.yml
+```
+
+## Flow
 
 1. The user clicks `Authenticate with Google` button
 2. The Google UI is loaded and the user accepts to authenticate
@@ -20,24 +29,24 @@ graphcool module add graphcool/modules/authentication/google
 6. In any case, the `authenticateGoogleUser(googleToken: String!)` mutation returns a valid token for the user
 7. Your app stores the token and uses it in its `Authorization` header for all further requests to Graphcool
 
-## Google App Setup
+## Setup
 
 Follow the steps on https://developers.google.com/identity/ for how to work with the Google Identity Platform.
 * First, create a new project:
 
-  ![](new-project.png)
+  ![](docs/new-project.png)
 
 * Click the `Credentials` tab to create new credentials. Choose `OAuth client ID`:
 
-  ![](create-credentials.png)
+  ![](docs/create-credentials.png)
 
 * Choose `Webapplication` as application type, and add `http://localhost:8000` as authorised JavaScript origin:
 
-  ![](create-client-id.png)
+  ![](docs/create-client-id.png)
 
 * Create a new Client ID
 
-  ![](client-id.png)
+  ![](docs/client-id.png)
 
 Copy the Client ID and use it to replace `__CLIENT_ID__` in `login.html`.
 
@@ -71,3 +80,5 @@ mutation {
 ```
 
 You should see that a new user has been created. The returned token can be used to authenticate requests to your Graphcool API as that user. Note that running the mutation again with the same Google token will not add a new user.
+
+![](http://i.imgur.com/5RHR6Ku.png)
