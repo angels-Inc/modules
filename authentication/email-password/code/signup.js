@@ -50,8 +50,11 @@ module.exports = function(event) {
           return Promise.reject("Email already in use")
         }
       })
-      .then((id) => {
-        return { data: { id } }
+      .then(graphcoolUserId => {
+        return graphcool.generateAuthToken(graphcoolUserId, 'EmailUser')
+          .then(token => {
+            return { data: {id: graphcoolUserId, token}}
+        })
       })
       .catch((error) => {
         console.log(error)
