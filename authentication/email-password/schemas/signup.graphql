@@ -1,5 +1,6 @@
 type SignupEmailUserPayload {
   id: ID!
+  token: String!
 }
 
 extend type Mutation {
