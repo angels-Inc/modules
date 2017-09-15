@@ -7,13 +7,13 @@ functions:
     handler:
       code:
         src: ./code/signup.js
-    type: schemaExtension
+    type: resolver
     schema: ./schemas/signup.graphql
   authenticate:
     handler:
       code:
         src: ./code/authenticate.js
-    type: schemaExtension
+    type: resolver
     schema: ./schemas/authenticate.graphql
 
 # Permanent Auth Token / Root Tokens
