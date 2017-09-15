@@ -12,7 +12,7 @@ graphcool module add graphcool/modules/authentication/github
 
 ## Configuration
 
-To activate the module, you need to add the module to the `modules` section in your `graphcool.yml` file:
+After downloading the module, add it to the `modules` section in your `graphcool.yml` file:
 
 ```yaml
 modules:

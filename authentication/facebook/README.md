@@ -1,4 +1,4 @@
-# facebook-authentication
+# facebook
 
 Add Facebook Authentication to your Graphcool project 🎁
 
@@ -10,7 +10,16 @@ graphcool init
 graphcool module add graphcool/modules/authentication/facebook-authentication
 ```
 
-## Authentication flow in app
+## Configuration
+
+After downloading the module, add it to the `modules` section in your `graphcool.yml` file:
+
+```yaml
+modules:
+  github: modules/facebook/graphcool.yml
+```
+
+## Flow
 
 1. The user clicks the `Authenticate with Facebook` button
 2. The Facebook UI is loaded and the user accepts
@@ -20,7 +29,7 @@ graphcool module add graphcool/modules/authentication/facebook-authentication
 6. In any case, the `authenticateFacebookUser(facebookToken: String!)` mutation returns a valid token for the user
 7. Your app stores the token and uses it in its `Authorization` header for all further requests to Graphcool
 
-## Facebook App Setup
+## Setup
 
 ### Create a Facebook App
 

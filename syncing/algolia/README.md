@@ -10,6 +10,32 @@ graphcool init
 graphcool module add graphcool/modules/syncing/algolia
 ```
 
+## Configuration
+
+After downloading the module, add it to the `modules` section in your `graphcool.yml` file:
+
+```yaml
+modules:
+  github: modules/algolia/graphcool.yml
+```
+
+In your base project, you need to configure the following **environment variables**.
+
+- `ALGOLIA_APPLICATION_ID`: Algolia Application ID
+- `ALGOLIA_API_KEY`: Algolia API Key
+- `ALGOLIA_INDEX_NAME`: Algolia Index Name
+
+An easy way to set these up is using [direnv](https://direnv.net/).
+To use `direnv`, put the following into `.envrc` in you project root:
+
+```sh
+export ALGOLIA_APPLICATION_ID=xxx
+export ALGOLIA_API_KEY=xxx
+export ALGOLIA_INDEX_NAME=xxx
+```
+
+Read on to see how to obtain the environment variables.
+
 ## Set up your Sync Query
 
 To enable this module you need to make changes to two files:

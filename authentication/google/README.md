@@ -10,7 +10,16 @@ graphcool init
 graphcool module add graphcool/modules/authentication/google
 ```
 
-## Authentication flow in app
+## Configuration
+
+After downloading the module, add it to the `modules` section in your `graphcool.yml` file:
+
+```yaml
+modules:
+  github: modules/google/graphcool.yml
+```
+
+## Flow
 
 1. The user clicks `Authenticate with Google` button
 2. The Google UI is loaded and the user accepts to authenticate
@@ -20,7 +29,7 @@ graphcool module add graphcool/modules/authentication/google
 6. In any case, the `authenticateGoogleUser(googleToken: String!)` mutation returns a valid token for the user
 7. Your app stores the token and uses it in its `Authorization` header for all further requests to Graphcool
 
-## Google App Setup
+## Setup
 
 Follow the steps on https://developers.google.com/identity/ for how to work with the Google Identity Platform.
 * First, create a new project:
