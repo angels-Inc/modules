@@ -47,8 +47,11 @@ module.exports = function(event) {
 
         return resolve({})
       } else {
-        console.log(`Email was successfuly sent:`)
-        console.log(response)
+        if (response.statusCode === 202) {
+          console.log(`Email both valid, and queued to be delivered.`)
+        } else {
+          console.log(response)
+        }
 
         return resolve({})
       }
