@@ -1,0 +1,13 @@
+subscription {
+  MailgunEmail(filter: {
+    mutation_in: [CREATED]
+  }) {
+    node {
+      id
+      from
+      to
+      subject
+      text
+    }
+  }
+}
