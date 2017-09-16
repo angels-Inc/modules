@@ -23,14 +23,14 @@ In your base project, you need to configure the following **environment variable
 
 - `SENDGRID_API_KEY`: SendGrid API Key
 
-An easy way to set these up is using [direnv](https://direnv.net/).
+You can create a new Sendgrid API Key [in the account settings](https://app.sendgrid.com/settings/api_keys) after signing up.
+
+An easy way to setup environment variables is using [direnv](https://direnv.net/).
 To use `direnv`, put the following into `.envrc` in you project root:
 
 ```sh
 export SENDGRID_API_KEY=xxx
 ```
-
-You can create a new Sendgrid API Key [in the account settings](https://app.sendgrid.com/settings/api_keys) after signing up.
 
 ## Flow
 
@@ -66,6 +66,6 @@ mutation {
 }
 ```
 
-You should see that a new `Email` node has been created, and you received a new email. This should also be refleted by the function logs.
+You should see that a new `SendgridEmail` node has been created, and you received a new email. This is also reflected in the function logs.
 
 ![](http://i.imgur.com/5RHR6Ku.png)
