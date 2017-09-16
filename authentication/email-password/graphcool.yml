@@ -21,6 +21,10 @@ functions:
     handler:
       code:
         src: ./code/loggedInUser.js    
+        
+permissions:
+  - operation: EmailUser.create
+  - operation: EmailUser.read
 
 # Permanent Auth Token / Root Tokens
 rootTokens: 
