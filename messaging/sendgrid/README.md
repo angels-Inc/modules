@@ -12,13 +12,6 @@ graphcool module add graphcool/modules/messaging/sendgrid
 
 ## Configuration
 
-After downloading the module, add it to the `modules` section in your `graphcool.yml` file:
-
-```yaml
-modules:
-  sendgrid: modules/sendgrid/graphcool.yml
-```
-
 In your base project, you need to configure the following **environment variables**.
 
 - `SENDGRID_API_KEY`: SendGrid API Key
