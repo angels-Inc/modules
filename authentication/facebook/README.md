@@ -10,10 +10,6 @@ graphcool init
 graphcool module add graphcool/modules/authentication/facebook-authentication
 ```
 
-## Configuration
-
-No further configuration required.
-
 ## Flow
 
 1. The user clicks the `Authenticate with Facebook` button
