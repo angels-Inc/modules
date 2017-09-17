@@ -12,13 +12,6 @@ graphcool module add graphcool/modules/syncing/algolia
 
 ## Configuration
 
-After downloading the module, add it to the `modules` section in your `graphcool.yml` file:
-
-```yaml
-modules:
-  algolia: modules/algolia/graphcool.yml
-```
-
 In your base project, you need to configure the following **environment variables**.
 
 - `ALGOLIA_APPLICATION_ID`: Algolia Application ID
