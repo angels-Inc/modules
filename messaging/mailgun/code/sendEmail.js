@@ -17,21 +17,38 @@ module.exports = event => {
   const token = new Buffer(`api:${process.env['MAILGUN_API_KEY']}`).toString('base64')
   const endpoint = `https://api.mailgun.net/v3/${process.env['MAILGUN_DOMAIN']}/messages`
 
-  const node = event.data.MailgunEmail.node
-  const id = node.id
-  const from = node.from
-  const to = node.to
-  const subject = node.subject
-  const text = node.text
+  const tag = event.data.tag
+  const from = event.data.from
+  const to = event.data.to
+  const subject = event.data.subject
+  const text = event.data.text
+  const recipientVariables = event.data.recipientVariables || {}
 
-  console.log('Sending out email:')
-  console.log(`[${id} - ${subject}] from ${from} to ${to}`)
+  if (to.length > 1000) {
+    console.log(`Can't batch more than 1000 emails!`)
+    return { error: `Can't batch more than 1000 emails!` }
+  }
+
+  if (to.length === 1) {
+    console.log('Sending out email:')
+    console.log(`[${tag} - ${subject}] from ${from} to ${to}`)
+  } else {
+    console.log('Sending out batched email:')
+    console.log(`[${tag} - ${subject}] from ${from}`)
+    console.log(`recipients: ${to}`)
+    console.log(`recipientVariables: ${recipientVariables}`)
+  }
 
   const form = new FormData()
   form.append('from', from)
-  form.append('to', to)
+
+  for (var i = 0; i < to.length; i++) {
+      form.append('to', to[i])
+  }
+
   form.append('subject', subject)
   form.append('text', text)
+  form.append('recipient-variables', JSON.stringify(recipientVariables))
 
   return fetch(endpoint, {
     headers: {
@@ -45,12 +62,12 @@ module.exports = event => {
     console.log(`Email both valid, and queued to be delivered.`)
     console.log(json)
 
-    return json
+    return { data: { success: true } }
   })
   .catch(error => {
     console.log(`Email ${id} could not be sent because an error occured:`)
     console.log(error)
 
-    return error
+    return { data: { success: false } }
   })
 }

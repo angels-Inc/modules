@@ -10,5 +10,5 @@ functions:
         environment:
           MAILGUN_API_KEY: ${env:MAILGUN_API_KEY}
           MAILGUN_DOMAIN: ${env:MAILGUN_DOMAIN}
-    type: subscription
-    query: ./code/sendEmail.graphql
+    type: resolver
+    schema: ./code/sendEmail.graphql

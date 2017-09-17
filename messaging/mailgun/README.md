@@ -36,13 +36,14 @@ export MAILGUN_DOMAIN=xxx
 
 ## Flow
 
-### Single Emails
+Use the `sendMailgunEmail` mutation to send emails according to its parameters:
 
-Whenever a new `MailgunEmail` node is created with information about the recipient, sender, subject and email body, the server-side subscription picks it up and invokes the Mailgun API to send out the email.
-
-### Batched Email
-
-WIP: You can also send [batched emails](http://mg-documentation.readthedocs.io/en/latest/user_manual.html#batch-sending) using the mailgun API.
+* `tag: String!`: custom tag for internal logging
+* `from: String!`: sender email
+* `to: [String!]!`: a list of recipient emails
+* `subject: String!`: the email subject, can contain references to `recipientVariables`
+* `text: String!`: the email body, can contain references to `recipientVariables`
+* `recipientVariables: Json`: optional recipient variables for [batched emails](http://mg-documentation.readthedocs.io/en/latest/user_manual.html#batch-sending). Read the documentation for more information on the encoding.
 
 ## Test the Code
 
@@ -58,22 +59,40 @@ Hook into the function logs:
 graphcool logs -f sendEmail --tail
 ```
 
-Run this mutation to create a new email:
+Run this mutation to send a single email:
 
 ```graphql
 mutation {
-  # replace __YOUR_EMAIL__!
-  createMailgunEmail(
-    from: "__YOUR_EMAIL__"
-    to: "__YOUR_EMAIL__"
+  # replace __SENDER_EMAIL__ and __RECIPIENT_EMAIL__ with *authorized* email addresses!
+  sendMailgunEmail(
+    tag: "2017-09-16-welcome-email"
+    from: "__SENDER_EMAIL__"
+    to: "__RECIPIENT_EMAIL__"
     subject: "A new email from the Graphcool mailgun module!"
     text: "This is your first email from the Graphcool mailgun module!"
   ) {
-    id
+    success
   }
 }
 ```
 
-You should see that a new `MailgunEmail` node has been created, and you received a new email. This is also reflected in the function logs.
+Run this mutation to send a batched email:
+
+```graphql
+mutation {
+    # replace __SENDER_EMAIL__, __FIRST_EMAIL__ and __SECOND_EMAIL__ with *authorized* email addresses!
+  createMailgunEmail(
+    tag: "2017-09-16-batched-welcome-email"
+    from: "__SENDER_EMAIL__"
+    to: ["__FIRST_EMAIL__", "__SECOND_EMAIL__"]
+    subject: "A new email from the Graphcool mailgun module!"
+    text: "Hey %recipient.name%, this is your first email from the Graphcool mailgun module!"
+    recipientVariables: "{\"__FIRST_EMAIL__\": {\"name\": \"First\"}, \"__SECOND_EMAIL__\": {\"name\": \"Second\"}}"
+
+  ) {
+    success
+  }
+}
+```
 
 ![](http://i.imgur.com/5RHR6Ku.png)

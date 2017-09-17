@@ -1,13 +1,14 @@
-subscription {
-  MailgunEmail(filter: {
-    mutation_in: [CREATED]
-  }) {
-    node {
-      id
-      from
-      to
-      subject
-      text
-    }
-  }
+type MailgunEmailPayload {
+  success: Boolean!
+}
+
+extend type Mutation {
+  sendMailgunEmail(
+    tag: String!
+    from: String!
+    to: [String!]!
+    subject: String!
+    text: String!
+    recipientVariables: Json
+  ): MailgunEmailPayload
 }
