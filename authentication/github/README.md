@@ -12,13 +12,6 @@ graphcool module add graphcool/modules/authentication/github
 
 ## Configuration
 
-After downloading the module, add it to the `modules` section in your `graphcool.yml` file:
-
-```yaml
-modules:
-  github: modules/github/graphcool.yml
-```
-
 Setup a new OAuth app on Github according to this guide: https://developer.github.com/apps/building-integrations/setting-up-and-registering-oauth-apps/registering-oauth-apps/ and copy its **client id** and **client secret**.
 
 In your base project, you need to configure the following **environment variables**.
