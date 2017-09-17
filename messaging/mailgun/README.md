@@ -12,13 +12,6 @@ graphcool module add graphcool/modules/messaging/mailgun
 
 ## Configuration
 
-After downloading the module, add it to the `modules` section in your `graphcool.yml` file:
-
-```yaml
-modules:
-  mailgun: modules/mailgun/graphcool.yml
-```
-
 In your base project, you need to configure the following **environment variables**.
 
 - `MAILGUN_API_KEY`: mailgun API Key
