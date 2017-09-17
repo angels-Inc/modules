@@ -10,10 +10,6 @@ graphcool init
 graphcool module add graphcool/modules/authentication/email-password
 ```
 
-## Configuration
-
-No further configuration required.
-
 ## Flow
 
 ### Signup
