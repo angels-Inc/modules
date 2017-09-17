@@ -10,15 +10,6 @@ graphcool init
 graphcool module add graphcool/modules/authentication/google
 ```
 
-## Configuration
-
-After downloading the module, add it to the `modules` section in your `graphcool.yml` file:
-
-```yaml
-modules:
-  google: modules/google/graphcool.yml
-```
-
 ## Flow
 
 1. The user clicks `Authenticate with Google` button
