@@ -19,10 +19,15 @@ module.exports = event => {
 
   const tag = event.data.tag
   const from = event.data.from
-  const to = event.data.to
   const subject = event.data.subject
   const text = event.data.text
   const recipientVariables = event.data.recipientVariables || {}
+
+  // workaround for https://github.com/graphcool/graphcool/issues/568
+  let to = event.data.to
+  if (typeof to === 'string') {
+    to = [to]
+  }
 
   if (to.length > 1000) {
     console.log(`Can't batch more than 1000 emails!`)
@@ -35,7 +40,9 @@ module.exports = event => {
   } else {
     console.log('Sending out batched email:')
     console.log(`[${tag} - ${subject}] from ${from}`)
-    console.log(`recipients: ${to}`)
+    for (var i = 0; i < to.length; i++) {
+      console.log(`recipients: ${to[i]}`)
+    }
     console.log(`recipientVariables: ${recipientVariables}`)
   }
 
@@ -43,7 +50,7 @@ module.exports = event => {
   form.append('from', from)
 
   for (var i = 0; i < to.length; i++) {
-      form.append('to', to[i])
+    form.append('to', to[i])
   }
 
   form.append('subject', subject)
