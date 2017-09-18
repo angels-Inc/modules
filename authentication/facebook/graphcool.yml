@@ -1,12 +1,18 @@
 types: ./types.graphql
 
 functions:
-  facebook-authentication:
+  facebookAuthentication:
     handler:
       code:
-        src: ./code/facebook-authentication.js
+        src: ./code/facebookAuthentication.js
     type: resolver
-    schema: ./code/facebook-authentication.graphql
+    schema: ./code/facebookAuthentication.graphql
+  loggedInUser:
+    handler:
+      code:
+        src: ./code/loggedInUser.js
+    type: resolver
+    schema: ./code/loggedInUser.graphql
 
 rootTokens:
 - facebook-authentication

@@ -35,7 +35,7 @@ module.exports = function(event) {
         if (userQueryResult.error) {
           return Promise.reject(userQueryResult.error)
         } else {
-          return userQueryResult.User
+          return userQueryResult.FacebookUser
         }
       })
   }
