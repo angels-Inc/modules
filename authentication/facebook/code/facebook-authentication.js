@@ -63,7 +63,7 @@ module.exports = function(event) {
     .then((facebookUser) => {
       return getGraphcoolUser(facebookUser)
         .then((graphcoolUser) => {
-          if (graphcoolUser === null) {
+          if (!graphcoolUser) {
             return createGraphcoolUser(facebookUser)
           } else {
             return graphcoolUser.id
