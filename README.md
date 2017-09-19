@@ -17,4 +17,8 @@ graphcool init
 graphcool module add graphcool/modules/authentication/github
 ```
 
+## More Resources
+
+See [the example collection](https://github.com/graphcool-examples/graphcool-examples) that make use of Graphcool modules.
+
 ![](http://i.imgur.com/5RHR6Ku.png)
