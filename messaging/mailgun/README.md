@@ -74,7 +74,7 @@ Run this mutation to send a batched email:
 ```graphql
 mutation {
     # replace __SENDER_EMAIL__, __FIRST_EMAIL__ and __SECOND_EMAIL__ with *authorized* email addresses!
-  createMailgunEmail(
+  sendMailgunEmail(
     tag: "2017-09-16-batched-welcome-email"
     from: "__SENDER_EMAIL__"
     to: ["__FIRST_EMAIL__", "__SECOND_EMAIL__"]
