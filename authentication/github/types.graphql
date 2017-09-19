@@ -1,6 +1,10 @@
 type GithubUser {
+  # required system field:
   id: ID! @isUnique
-  createdAt: DateTime!
+
+  # optional system fields. uncomment if you need them:
+  # createdAt: DateTime!
+  # updatedAt: DateTime!
+
   githubUserId: String @isUnique
-  updatedAt: DateTime!
 }
