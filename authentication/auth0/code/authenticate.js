@@ -3,8 +3,8 @@ var jwtDecode = require('jwt-decode')
 const jwksRsa = require('jwks-rsa')
 
 
-const AUTH0_DOMAIN = 'nikolasburk.eu.auth0.com'
-const AUTH0_CLIENT_ID = 'wb3aqPafncac8aZYlGPuIgxO51auo2rR'
+const AUTH0_DOMAIN = ''
+const AUTH0_CLIENT_ID = ''
 
 const fetchAuth0UserProfile = auth0AccessToken => {
   const profileUrl = `https://${AUTH0_DOMAIN}/userinfo?access_token=${auth0AccessToken}`
