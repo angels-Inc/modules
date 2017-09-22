@@ -5,9 +5,9 @@ functions:
   sendTwilioSms:
     handler:
       code:
-        src: ./code/sendTwilioSms.js
+        src: ./src/sendTwilioSms.js
         environment:
           TWILIO_ACCOUNT_SID: ${env:TWILIO_ACCOUNT_SID}
           TWILIO_AUTH_TOKEN: ${env:TWILIO_AUTH_TOKEN}
     type: resolver
-    schema: ./code/sendTwilioSms.graphql
+    schema: ./src/sendTwilioSms.graphql

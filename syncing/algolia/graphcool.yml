@@ -4,9 +4,9 @@ functions:
   syncModel:
     handler:
       code:
-        src: ./code/sync.js
+        src: ./src/sync.js
     type: subscription
-    query: ./code/syncQuery.graphql
+    query: ./src/syncQuery.graphql
 
 permissions:
 - operation: SyncModel.read

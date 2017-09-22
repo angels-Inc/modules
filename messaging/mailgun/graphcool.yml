@@ -6,9 +6,9 @@ functions:
   sendEmail:
     handler:
       code:
-        src: ./code/sendEmail.js
+        src: ./src/sendEmail.js
         environment:
           MAILGUN_API_KEY: ${env:MAILGUN_API_KEY}
           MAILGUN_DOMAIN: ${env:MAILGUN_DOMAIN}
     type: resolver
-    schema: ./code/sendEmail.graphql
+    schema: ./src/sendEmail.graphql
