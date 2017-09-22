@@ -1,6 +1,5 @@
 const fromEvent = require('graphcool-lib').fromEvent
-var jwtDecode = require('jwt-decode')
-const jwksRsa = require('jwks-rsa')
+const jwtDecode = require('jwt-decode')
 
 
 const AUTH0_DOMAIN = ''
