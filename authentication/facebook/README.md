@@ -10,15 +10,6 @@ graphcool init
 graphcool module add graphcool/modules/authentication/facebook-authentication
 ```
 
-## Configuration
-
-After downloading the module, add it to the `modules` section in your `graphcool.yml` file:
-
-```yaml
-modules:
-  facebook: modules/facebook/graphcool.yml
-```
-
 ## Flow
 
 1. The user clicks the `Authenticate with Facebook` button

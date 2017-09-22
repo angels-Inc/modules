@@ -5,24 +5,25 @@ types: ./types.graphql
 functions:
   signup:
     type: resolver
-    schema: ./schemas/signup.graphql
+    schema: ./src/signup.graphql
     handler:
       code:
-        src: ./code/signup.js
+        src: ./src/signup.js
   authenticate:
     type: resolver
-    schema: ./schemas/authenticate.graphql
+    schema: ./src/authenticate.graphql
     handler:
       code:
-        src: ./code/authenticate.js
-  loggednInUser:
+        src: ./src/authenticate.js
+  loggedInUser:
     type: resolver
-    schema: ./schemas/loggedInUser.graphql
+    schema: ./src/loggedInUser.graphql
     handler:
       code:
-        src: ./code/loggedInUser.js    
+        src: ./src/loggedInUser.js
 
 # Permanent Auth Token / Root Tokens
-rootTokens: 
+rootTokens:
   - signup
   - authenticate
+  - loggedInUser

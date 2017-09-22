@@ -2,6 +2,8 @@
 
 Add Graphcool Modules to extend your project 🎁
 
+> Note: Modules are available with the new CLI version. For more information on the CLI Beta, read [the feedback thread in the Forum](https://www.graph.cool/forum/t/feedback-new-cli-beta/949).
+
 ## Getting Started
 
 ```sh
@@ -15,10 +17,8 @@ graphcool init
 graphcool module add graphcool/modules/authentication/github
 ```
 
-## Other resources
+## More Resources
 
-* [Graphcool Functions ⚡️](https://github.com/graphcool-examples/functions)
-* [Scripts 📝](https://github.com/graphcool-examples/scripts)
-* [Schemas 🗒](https://github.com/graphcool-examples/schemas)
+See [the example collection](https://github.com/graphcool-examples/graphcool-examples) that make use of Graphcool modules.
 
 ![](http://i.imgur.com/5RHR6Ku.png)
