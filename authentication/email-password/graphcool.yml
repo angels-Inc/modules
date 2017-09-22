@@ -15,7 +15,7 @@ functions:
     handler:
       code:
         src: ./src/authenticate.js
-  loggednInUser:
+  loggedInUser:
     type: resolver
     schema: ./src/loggedInUser.graphql
     handler:
