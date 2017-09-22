@@ -20,13 +20,9 @@ functions:
     schema: ./schemas/loggedInUser.graphql
     handler:
       code:
-        src: ./code/loggedInUser.js    
-        
-permissions:
-  - operation: EmailUser.create
-  - operation: EmailUser.read
+        src: ./code/loggedInUser.js
 
 # Permanent Auth Token / Root Tokens
-rootTokens: 
+rootTokens:
   - signup
   - authenticate
