@@ -10,15 +10,6 @@ graphcool init
 graphcool module add graphcool/modules/authentication/email-password
 ```
 
-## Configuration
-
-After downloading the module, add it to the `modules` section in your `graphcool.yml` file:
-
-```yaml
-modules:
-  email-password: modules/email-password/graphcool.yml
-```
-
 ## Flow
 
 ### Signup

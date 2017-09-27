@@ -42,13 +42,16 @@ module.exports = function(event) {
   return new Promise((resolve, reject) => {
     sg.API(request, (error, response) => {
       if (error) {
-        console.log(`Email ${id} could not be send because an error occured:`)
+        console.log(`Email ${id} could not be sent because an error occured:`)
         console.log(error)
 
         return resolve({})
       } else {
-        console.log(`Email was successfuly sent:`)
-        console.log(response)
+        if (response.statusCode === 202) {
+          console.log(`Email both valid, and queued to be delivered.`)
+        } else {
+          console.log(response)
+        }
 
         return resolve({})
       }

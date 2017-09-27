@@ -4,9 +4,9 @@ functions:
   google-authentication:
     handler:
       code:
-        src: ./code/google-authentication.js
+        src: ./src/google-authentication.js
     type: resolver
-    schema: ./code/google-authentication.graphql
+    schema: ./src/google-authentication.graphql
 
 rootTokens:
 - google-authentication

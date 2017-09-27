@@ -6,12 +6,12 @@ functions:
   github-authentication:
     handler:
       code:
-        src: ./code/github-authentication.js
+        src: ./src/github-authentication.js
         environment:
           CLIENT_ID: ${env:CLIENT_ID}
           CLIENT_SECRET: ${env:CLIENT_SECRET}
     type: resolver
-    schema: ./schemas/github-authentication.graphql
+    schema: ./src/github-authentication.graphql
 
 # Permanent Auth Token / Root Tokens
 rootTokens:
