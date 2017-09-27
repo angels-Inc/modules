@@ -29,4 +29,5 @@ graphcool module add graphcool/modules/authentication/firebase
 
 ## TODO
 
+- [ ] add setup info in README
 - [ ] remove logs from function
