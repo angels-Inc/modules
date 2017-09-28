@@ -7,7 +7,7 @@ Send Sms with Twilio in your Graphcool project 🎁
 ```sh
 npm -g install graphcool
 graphcool init
-graphcool module add graphcool/modules/messaging/twilio
+graphcool modules add graphcool/modules/messaging/twilio
 ```
 
 ## Configuration

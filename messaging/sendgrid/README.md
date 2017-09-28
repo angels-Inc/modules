@@ -7,7 +7,7 @@ Send emails with SendGrid in your Graphcool project 🎁
 ```sh
 npm -g install graphcool
 graphcool init
-graphcool module add graphcool/modules/messaging/sendgrid
+graphcool modules add graphcool/modules/messaging/sendgrid
 ```
 
 ## Configuration

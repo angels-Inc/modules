@@ -7,7 +7,7 @@ Add email and password login to your Graphcool Project 🎁
 ```sh
 npm -g install graphcool
 graphcool init
-graphcool module add graphcool/modules/authentication/email-password
+graphcool modules add graphcool/modules/authentication/email-password
 ```
 
 ## Flow

@@ -7,7 +7,7 @@ Add Github Authentication to your Graphcool project 🎁
 ```sh
 npm -g install graphcool
 graphcool init
-graphcool module add graphcool/modules/authentication/github
+graphcool modules add graphcool/modules/authentication/github
 ```
 
 ## Configuration

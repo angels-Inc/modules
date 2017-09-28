@@ -7,7 +7,7 @@ Add automatic Algolia indexing to your Graphcool project 🎁
 ```sh
 npm -g install graphcool
 graphcool init
-graphcool module add graphcool/modules/syncing/algolia
+graphcool modules add graphcool/modules/syncing/algolia
 ```
 
 ## Configuration
