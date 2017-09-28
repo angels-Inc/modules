@@ -1,0 +1,11 @@
+type OneSignalNotificationPayload {
+  id: String!
+  recipients: Int!
+}
+
+extend type Query {
+  addOneSignalNotification(
+    content: String!
+    segments: [String!]
+  ): OneSignalNotificationPayload
+}

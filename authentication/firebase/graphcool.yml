@@ -4,15 +4,16 @@ functions:
   authenticateFirebaseUser:
     handler:
       code:
-        src: ./code/authenticateFirebaseUser.js
+        src: ./src/authenticateFirebaseUser.js
     type: resolver
-    schema: ./code/authenticateFirebaseUser.graphql
+    schema: ./src/authenticateFirebaseUser.graphql
   loggedInUser:
     handler:
       code:
-        src: ./code/loggedInUser.js
+        src: ./src/loggedInUser.js
     type: resolver
-    schema: ./code/loggedInUser.graphql
+    schema: ./src/loggedInUser.graphql
 
 rootTokens:
 - firebase-authentication
+- loggedInUser
