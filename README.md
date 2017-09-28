@@ -1,6 +1,6 @@
 # modules
 
-Add graphcool modules  to extend your project 🎁
+Use Graphcool Modules to extend your project 🎁
 
 > Note: Modules are available with the new CLI version. For more information on the CLI Beta, read [the feedback thread in the Forum](https://www.graph.cool/forum/t/feedback-new-cli-beta/949).
 
@@ -15,6 +15,11 @@ graphcool init
 
 # Add "GitHub Login" module
 graphcool modules add graphcool/modules/authentication/github
+
+# Adjust the module in modules/authentication/github...
+
+# deploy changes
+graphcool deploy
 ```
 
 ## More Resources
