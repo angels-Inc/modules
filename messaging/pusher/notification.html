@@ -3,8 +3,8 @@
   <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
   <script>
 
-    // replace this with your app id
-    var APP_ID = '__APP_ID__'
+    // replace this with your app key
+    var APP_KEY = '__APP_KEY__'
 
     // replace if you run on another cluster
     var CLUSTER = 'us'
@@ -16,7 +16,7 @@
     // Enable pusher logging - don't include this in production
     Pusher.logToConsole = true;
 
-    var pusher = new Pusher(APP_ID, {
+    var pusher = new Pusher(APP_KEY, {
       cluster: CLUSTER,
       encrypted: true
     });

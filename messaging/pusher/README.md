@@ -39,7 +39,7 @@ Whenever the `triggerPusherEvent` mutation is called, a new push notification ev
 
 First, setup the Pusher configuration in `notification.html`. Please replace the following constants with the same value you used for the environment variables above:
 
-* `APP_ID`: Pusher app id
+* `APP_KEY`: Pusher app key
 * `CLUSTER`: Pusher cluster
 
 Then, serve the file `notification.html`, for example with:
