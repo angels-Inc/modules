@@ -18,16 +18,11 @@ module.exports = event => {
   const endpoint = `https://api.mailgun.net/v3/${process.env['MAILGUN_DOMAIN']}/messages`
 
   const tag = event.data.tag
+  const to = event.data.to
   const from = event.data.from
   const subject = event.data.subject
   const text = event.data.text
   const recipientVariables = event.data.recipientVariables || {}
-
-  // workaround for https://github.com/graphcool/graphcool/issues/568
-  let to = event.data.to
-  if (typeof to === 'string') {
-    to = [to]
-  }
 
   if (to.length > 1000) {
     console.log(`Can't batch more than 1000 emails!`)
